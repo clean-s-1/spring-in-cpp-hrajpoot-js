@@ -22,14 +22,19 @@ class IAlerter
     public:
         bool emailSent = false;
         bool ledGlows = false;
+        virtual void setEmailAlert();
+        virtual void setLedAlert();
+
 };
 
 class EmailAlert : public IAlerter
 {
+    virtual void setEmailAlert();
 };
 
 class LEDAlert : public IAlerter
 {
+    virtual void setLedAlert();
 };
 
 class StatsAlerter

@@ -31,13 +31,26 @@ Stats Statistics::ComputeStatistics(const std::vector<double>& input)
     return aStat;
 }
 
+void IAlerter::setEmailAlert() {}
+void IAlerter::setLedAlert() {}
+
+void EmailAlert::setEmailAlert()
+{
+    emailSent = true;
+}
+
+void LEDAlert::setLedAlert()
+{
+    ledGlows = true;
+}
+
 void StatsAlerter::checkAndAlert(std::vector<float> iInput)
 {
     const float aMaxInputThreshold = *max_element(iInput.begin(), iInput.end());
     if (aMaxInputThreshold > aMaxThreshold)
     {
         //Input threshold is greater than Max Threshold. Set the Alerts
-        aAlerters[0]->emailSent = true;
-        aAlerters[1]->ledGlows = true;
+        aAlerters[0]->setEmailAlert();
+        aAlerters[1]->setLedAlert();
     }
 }
